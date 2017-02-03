@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>放大镜效果</title>
+<style>
+    body *{margin:0px;padding:0px;}
+	#box{width:360px;position:relative;margin:20px auto;}
+	#box1{position:relative;width:360px;}
+	#box1 span{position:absolute;left:0px;top:0px;width:120px;height:120px;background:#888888;opacity:0.5;cursor:move;display:none;}
+	#pic1{width:360px;height:360px;border:thin #888888 solid;}
+	#box2{position:absolute;left:370px;top:0px;width:240px;height:240px;border:1px #888888 solid;overflow:hidden;display:none;}
+	#pic2{position:absolute;left:0px;top:0px;}
+</style>
+</head>
+<body>
+    
+    <div id="box">
+    
+        <div id="box1">
+            <img src="images/06.jpg" alt="06" id="pic1">
+            <span></span>
+        </div>
+    
+        <div id="box2">
+            <img src="images/06.jpg" alt="06" id="pic2">
+        </div>
+        
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+<!--
+<script src="../scripts/jquery-1.11.1.min.js"></script> 
+-->
+<script>
+    $(function(){
+		
+		//获取坐标
+		var x,y;
+		function move(){
+			var span=$("#box1 span")[0];
+						    
+			$(document).mousemove(function(event){
+			    x=event.clientX-$("#box1").offset().left-span.offsetWidth/2;
+			    y=event.clientY-$("#box1").offset().top-span.offsetHeight/2;
+				
+			});	
+				
+			if (x<0){
+			    x=0;	
+			}else if(x>=0&&x<=240){
+			    x=x;	
+			}else{
+			    x=240;	
+			}
+			
+			if (y<0){
+			    y=0;	
+			}else if(y>=0&&y<=240){
+			    y=y;	
+			}else{
+			    y=240;	
+			}		
+		};
+		
+		
+		$("#box1").mouseover(function(){
+			move();
+			$("#box1 span").css({"display":"block","left":x+"px","top":y+"px"});
+			$("#box2").css({"display":"block"});
+			$("#pic2").css({"left":-2*x+"px","top":-2*y+"px"});
+		}).mousemove(function(){
+			move();
+			$("#box1 span").css({"display":"block","left":x+"px","top":y+"px"});
+			$("#pic2").css({"left":-2*x+"px","top":-2*y+"px"});
+		});
+		
+		$("#box1").mouseout(function(){
+			$("#box1 span").css({"display":"none"});
+			$("#box2").css({"display":"none"});
+		})
+		
+	});
+</script>
+</body>
+</html>

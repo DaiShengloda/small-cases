@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>禁止中文输入、禁止复制/粘贴、过滤敏感词</title>
+    <style>
+        body{font-family:"Helvetica","Arial",sans-serif;width:500px;margin:100px auto;font-weight:bold;
+            color:#262626;}
+        body div{margin-top:15px}
+        body .form_class{position:relative;}
+        body .form_class label{float:left;padding:0px;margin-right:15px;width:60px;line-height:35px;text-align:right;}
+        body .form_class input{width:400px;line-height:35px;padding-left:10px;height:35px}
+        body .form_class span{font-size:0.7em;font-weight:normal;position:absolute;right:-110px;top:5px;color:red;}
+		body .form_class textarea{padding:10px;width:350px;}        
+        body .form_class button{width:400px;line-height:35px;padding-left:10px;height:35px;border:none;background-color:               #4A7DD5;color:white;font-size:0.9em;font-weight:bold;border-radius:5px;cursor:pointer;}
+		body .form_class select{width:100px;height:1.8em;margin-right:20px;}
+    </style>
+</head>
+<body>
+
+    <form>
+    
+        <div class="form_class">
+            <label>用户名</label>
+          <input type="text" placeholder="用户名" name="1"><span>禁止中文输入</span>
+        </div>
+        
+        <div class="form_class">
+            <label>昵称</label>
+          <input type="text" placeholder="昵称"><span>禁止复制、粘贴</span>
+        </div>
+        
+        <div class="form_class">
+            <label>文本</label>
+            <textarea placeholder="女|日本|丑闻 将被过滤" rows="5" cols="45"></textarea><span>过滤敏感词</span>
+        </div>
+        
+        <div class="form_class">
+          <label>&nbsp;</label>
+          <button type="submit">提交</button>
+      </div>
+      
+    </form>
+ 
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+<!--
+<script src="../scripts/jquery-1.11.1.min.js"></script>
+-->
+<script>
+    $(function(){
+		
+		//禁止中文输入		
+		$("input").keyup(function(){
+			var dta=$(this).attr("name");
+			if (dta==1){
+			    var vale=$(this).val().replace(/[\u4e00-\u9fa5]/g, "");
+			    $(this).val(vale);
+			}
+		});
+		
+		//禁止复制、粘贴
+		var ipt=$("input:eq(1)")[0];
+		ipt.oncopy=ipt.onpaste=function(){
+		    return false;	
+		};
+		
+		//过滤敏感词
+		$("textarea").keyup(function(){
+			var key=/女|日本|丑闻/g;
+		    var msg=$(this).val().replace(key,function(str){
+				var r=" ";
+				for(var i=0,len=str.length;i<len;i++){
+				    r+="*";	
+				}
+				return r;
+			});
+			$(this).val(msg);  	   
+				
+		});
+					
+	});	
+</script>   
+</body>
+</html>

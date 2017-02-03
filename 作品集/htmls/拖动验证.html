@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>拖动验证</title>
+<style>
+    #container{width:400px;height:30px;margin:100px auto;border:;background-color:#cccccc;text-align:center;}
+	#container{color:black}
+	#box{position:relative;width:0px;height:30px;background-color:#77b300;}
+	#box p{display:none;line-height:29px;font-size:0.9em;color:white;background-color:#77b300;}
+	#layer{
+		width:40px;
+		height:29px;
+		text-align:center;
+		line-height:29px;
+		border:1px solid #cccccc;
+		cursor:move;
+		background:url(images/arrow.png) no-repeat center white;
+	}
+</style>
+</head>
+<body>
+    
+    <div id="container">
+        <div id="box"><p>验证成功</p>
+            <div id="layer"></div>
+        </div>
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+<!--
+<script src="../scripts/jquery-1.11.1.min.js"></script> 
+-->
+<script>
+    $(function(){
+		
+		$("#layer").mousedown(function(){
+			$(this).css({"position":"absolute"});
+		});
+		
+		$(document).mouseup(function(){			
+			var x=parseInt($("#layer").css("left"));
+			if (x==360){
+			    $("#layer").unbind("mousemove")
+				    .css({"position":"absolute"});
+				$("#box p").css({"display":"block"});					
+			}else{
+				$("#layer").css({"left":"0px"})
+				    .css({"position":"static"});
+				$("#box").width("0px");
+			}			
+		});
+		
+		
+		$("#layer").mousemove(function(event){	
+		    var x=event.clientX-$("#box").offset().left-$("#layer")[0].clientWidth/2;
+		    x=x<=0?0:x;
+		    x=x>=360?360:x;	
+			$(this).css({"left":x+"px","top":"0px"});
+			$("#box").width(x+"px");			
+		});		
+
+		
+	});
+		
+</script>  
+</body>
+</html>

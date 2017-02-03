@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>延时加载</title>
+  <style>
+      body div{width:770px;margin:10px auto;}
+      #box ul{float:left;background-color:#CD0000;width:770px;margin:0px;padding:0px;padding-bottom:15px;list-style-type:none;}
+      #box ul li{float:left;width:350px;height:260px;margin:15px 0px 0px 10px;padding:10px;background:black url(images/loading.jpg) no-repeat 50% 50%;}
+      #box ul li img{width:350px;height:260px;}
+  </style>
+  </head>
+  <script>
+      /*var eventUtil={
+          addEventListener:function (element,type,handler){
+              if (element.addEventListener){
+                  return element.addEventListener(type,handler,false); 
+              }else if (element.attachEvent){
+                  return element.attachEvent("on"+type,handler);
+              }else{
+                  element["on"+type]=handler;
+              }
+          },
+          bind:function (object,handler){
+              return function (){
+                  return handler.apply(object,arguments)
+              }
+          },
+          pageX:function (element){
+              return element.offsetLeft+(element.offsetParent?arguments.callee(element.offsetParent):0);
+          },
+          pageY:function (element){
+              return element.offsetTop+(element.offsetParent?arguments.callee(element.offsetParent):0);
+          },
+          hasClass:function(element,className){
+		          return new RegExp("(^|\\s)"+className+"(\\s|$)").test(element.className);
+	        },
+          attr:function (element,attr,value){
+              if (arguments.length==2){
+                  return element.getAttribute("attr")?element.getAttribute("attr").nodeValue:undefined;
+              }else if(arguments.length==3){
+                  element.setAttribute("attr",value);
+              }
+          }
+      };
+      
+      //延时加载
+      function Lazyload(obj){
+          this.lazy=typeof obj==="string"?document.getElementById("obj"):obj;
+          this.aImg=this.lazy.getElementsByTagName("img");
+          this.fnLoad=eventUtil.bind(this,this.load);
+          this.load();
+          eventUtil.addEventListener(window,"scroll",this.fnLoad);
+          eventUtil.addEventListener(window,"resize",this.fnLoad);
+      };
+      Lazyload.prototype={
+          load:function (){
+              var iScrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+              var iClientHeight=document.documentElement.clientHeight+iScrollTop;
+              var i=0;
+              var aParent=[];
+		          var oParent=null;
+		          var iTop=0;
+		          var iBottom=0;
+              var aNotLoaded=this.loaded(0);
+              if (this.loaded(1).length!==this.aImg.length){
+                  for(i=0;i<aNotLoaded.length;i++){
+				              oParent=aNotLoaded[i].parentElement||aNotLoaded[i].parentNode;
+				              iTop=fgm.pageY(oParent);
+				              iBottom = iTop + oParent.offsetHeight;
+				              if ((iTop>iScrollTop&&iTop<iClientHeight)||(iBottom>iScrollTop&&iBottom<iClientHeight)){
+					                aNotLoaded[i].src=fgm.attr(aNotLoaded[i],"data-img")||aNotLoaded[i].src;
+					                aNotLoaded[i].className="loaded";
+				              }
+			            }
+             }
+          },
+          loaded:function (){
+              var array=[];
+              var i=0;
+              for(i=0;i<this.aImg.length;i++){
+		              eval("fgm.hasClass(this.aImg[i], \"loaded\")" + (!!status ? "&&" : "||") + "array.push(this.aImg[i])");
+		              return array;
+              }
+          }         
+      };
+      
+      //应用
+      eventUtil.addEventUtil(window,"load",function(){new LazyLoad("box")});*/
+     
+     
+      var fgm = {
+	on: function(element, type, handler) {
+		return element.addEventListener ? element.addEventListener(type, handler, false) : element.attachEvent("on" + type, handler)
+	},
+	bind: function(object, handler) {
+		return function() {
+			return handler.apply(object, arguments)	
+		}
+	},
+	pageX: function(element) {
+		return element.offsetLeft + (element.offsetParent ? arguments.callee(element.offsetParent) : 0)
+	},
+	pageY: function(element) {
+		return element.offsetTop + (element.offsetParent ? arguments.callee(element.offsetParent) : 0)	
+	},
+	hasClass: function(element, className) {
+		return new RegExp("(^|\\s)" + className + "(\\s|$)").test(element.className)
+	},
+	attr: function(element, attr, value) {
+		if(arguments.length == 2) {
+			return element.attributes[attr] ? element.attributes[attr].nodeValue : undefined
+		}
+		else if(arguments.length == 3) {
+			element.setAttribute(attr, value)
+		}
+	}
+};
+//延时加载
+function LazyLoad(obj) {
+	this.lazy = typeof obj === "string" ? document.getElementById(obj) : obj;
+	this.aImg = this.lazy.getElementsByTagName("img");
+	this.fnLoad = fgm.bind(this, this.load);
+	this.load();
+	fgm.on(window, "scroll", this.fnLoad);
+	fgm.on(window, "resize", this.fnLoad);
+}
+LazyLoad.prototype = {
+	load: function() {
+		var iScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var iClientHeight = document.documentElement.clientHeight + iScrollTop;
+		var i = 0;
+		var aParent = [];
+		var oParent = null;
+		var iTop = 0;
+		var iBottom = 0;
+		var aNotLoaded = this.loaded(0);
+		if(this.loaded(1).length != this.aImg.length) {
+			for(i = 0; i < aNotLoaded.length; i++) {
+				oParent = aNotLoaded[i].parentElement || aNotLoaded[i].parentNode;
+				iTop = fgm.pageY(oParent);
+				iBottom = iTop + oParent.offsetHeight;
+				if((iTop > iScrollTop && iTop < iClientHeight) || (iBottom > iScrollTop && iBottom < iClientHeight)) {
+					aNotLoaded[i].src = fgm.attr(aNotLoaded[i], "data-img") || aNotLoaded[i].src;
+					aNotLoaded[i].className = "loaded";
+				}
+			}
+		}
+	},
+	loaded: function(status) {
+		var array = [];
+		var i = 0;
+		for(i = 0; i < this.aImg.length; i++)
+		eval("fgm.hasClass(this.aImg[i], \"loaded\")" + (!!status ? "&&" : "||") + "array.push(this.aImg[i])");
+		return array
+	}
+};
+//应用
+fgm.on(window, "load", function () {new LazyLoad("box")});
+
+  </script>
+  <body>
+      <div id="box">
+          <ul>
+              <li><img src="images/none.png" data-img="images/1(1).jpg"></li>
+              <li><img src="images/none.png" data-img="images/1(1).jpg"></li>
+              <li><img src="images/none.png" data-img="images/1(1).jpg"></li>
+              <li><img src="images/none.png" data-img="images/1(1).jpg"></li>
+              <li><img src="images/none.png" data-img="images/1(1).jpg"></li>
+              <li><img src="images/none.png" data-img="images/1(1).jpg"></li>
+              <li><img src="images/none.png" data-img="images/1(1).jpg"></li>
+              <li><img src="images/none.png" data-img="images/1(1).jpg"></li>
+      </div>
+  </body>
+</html>

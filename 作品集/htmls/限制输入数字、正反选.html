@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>限制输入数字、正反选</title>
+  <style>
+      body{font-family:"Helvetica","Arial",sans-serif;width:500px;margin:100px auto;font-weight:bold;
+          color:#262626;}
+      body div{margin-top:15px}
+      body .form_class{position:relative;}
+      body .form_class label{float:left;padding:0px;margin-right:15px;width:60px;line-height:35px;text-align:right;}
+      body .form_class input{width:400px;line-height:35px;padding-left:10px;height:35px}
+      body .form_class span{font-size:0.7em;font-weight:normal;position:absolute;right:-110px;top:5px;color:red;}
+      body textarea{padding-left:10px;width:350px;height:200px;line-height:35px;}
+      body .form_class #my_span em{font-size:1.4em;color:black;}      
+      div#check_box{position:relative;height:172px;}
+      #my_label{font-size:1.0em;float:left;padding:0px;margin-right:15px;width:60px;line-height:35px;text-align:right;} 
+      #my_check{width:100px;margin-top:-2px;position:absolute;left:75px;}
+      div#my_check div.checkbox_class{font-size:0.7em;height:20px;margin:5px;font-weight:normal;}     
+      div#my_check div.checkbox_class:first-child{font-weight:bold;margin-bottom:10px;}
+      div#my_check div.checkbox_class:first-child a{text-decoration:none;}     
+      body .form_class button{width:400px;line-height:35px;padding-left:10px;height:35px;border:none;background-color:   #4A7DD5;
+          color:white;font-size:0.9em;font-weight:bold;border-radius:5px;cursor:pointer;}
+  </style>
+</head>
+<body>
+    <form>
+      <div class="form_class">
+          <label>用户名</label>
+          <input type="text" placeholder="用户名" disabled="true"><span>禁止输入字符文本</span>
+      </div>
+      <div class="form_class">
+          <label>昵称</label>
+          <input type="text" placeholder="昵称" value="" autofocus maxlength="15"><span>最多输入15个字符</span> 
+      </div>
+      <div class="form_class">
+          <label>密码</label>
+          <input type="password" placeholder="密码"><span>只能输入数字字符</span>
+      </div>
+      <div class="form_class">
+          <label>备注</label>
+          <textarea placeholder="备注" maxlength="150"></textarea><span id="my_span">还可以输入<em>150</em>个字</span>
+      </div>
+      <div id="check_box">
+          <label id="my_label">选项</label>
+          <div id="my_check">
+              <div class="checkbox_class">
+                  <input type="checkbox">
+                  <label><span>全选</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">反选</a></span></label>
+              </div>
+              <div class="checkbox_class">
+                  <input type="checkbox">
+                  <label>选项(一)</label>
+              </div>
+              <div class="checkbox_class">                 
+                  <input type="checkbox">
+                  <label>选项(二)</label>
+              </div>
+              <div class="checkbox_class">                
+                  <input type="checkbox">
+                  <label>选项(三)</label>
+              </div>
+              <div class="checkbox_class">                 
+                  <input type="checkbox">
+                  <label>选项(四)</label>
+              </div>
+               <div class="checkbox_class">                  
+                  <input type="checkbox">
+                  <label>选项(五)</label>
+              </div>
+          </div>
+      </div>     
+      <div class="form_class">
+          <label>&nbsp;</label>
+          <button type="submit">提交</button>
+      </div>
+    </form>
+<script type="text/javascript">
+window.onload=function (){
+    var form=document.forms[0],
+        input=form.elements[2];
+        
+    //限制输入数字    
+    input.onkeypress=function (){
+        var charCode;
+        if (typeof event.charCode=="number"){
+            charCode=event.charCode;
+        }else{
+            charCode=event.keyCode;
+        }
+        if (!/\d/.test(String.fromCharCode(charCode))){
+            if (event.preventDefault){
+                event.preventDefault();
+            }else{
+                event.returnValue=false;
+            }                              
+        }
+    }
+    var fourthInput=form.elements[3],
+        span=document.getElementById("my_span");
+        
+    //文本框显示剩余字数       
+    fourthInput.onkeydown=function (){
+        var len=150-this.value.length;
+        span.innerHTML="还可以输入"+"<em>"+len+"</em>"+"个字";
+    } 
+
+    var myCheck=document.getElementById("my_check"),
+        checkInput=myCheck.getElementsByTagName("input"),
+        allInput=checkInput[0],
+        link=myCheck.getElementsByTagName("a")[0],
+        bool=true,
+        i,len;
+        
+    function choose(input){
+        bool?input.checked="checked":input.checked="";
+        if (bool){
+            for(i=1,len=checkInput.length;i<len;i++){
+              checkInput[i].checked="checked";
+              bool=false;
+           }
+        }else{
+            for(i=1,len=checkInput.length;i<len;i++){
+              checkInput[i].checked="";
+              bool=true;
+              }
+        }
+    }
+    
+    //全选按钮
+    allInput.onclick=function (){        
+        choose(this);       
+    }
+    
+    //反选按钮
+    link.onclick=function (){
+        if (event.preventDefault){
+                event.preventDefault();
+            }else{
+                event.returnValue=false;
+            }
+        for(i=1,len=checkInput.length;i<len;i++){
+              if (checkInput[i].checked==""){
+                  checkInput[i].checked="checked";
+              }else{
+                  checkInput[i].checked="";
+              }             
+        }
+    }
+} 
+</script>
+</body>
+</html>

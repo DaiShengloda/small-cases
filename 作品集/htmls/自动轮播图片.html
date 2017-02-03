@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>自动轮播图片</title>
+  <style>
+      body{background-color:#d2b48c;}
+      div#box{border:1px black solid;width:510px;height:190;margin:10px auto;background-color:white;cursor:pointer;}
+      div#box div.list{width:490px;height:170px;position:relative;margin:10px;overflow:hidden;}
+      div#box ul{list-style-type:none;margin:0px;padding:0px;position:absolute;top:0px;}
+      div#box div.list ul li{width:490px;height:170px;}
+      div#box div.list div{position:absolute;right:5px;bottom:5px;list-style-type:none;}
+      div#box div.list div span{background-color:#E1700A;color:white;width:7px;text-align:center;float:left;padding:0px 5px;margin-right:5px;}
+      div#sec_box{width:510px;margin:10px auto;color:#4E4E4E;font-family:sans-serif;position:relative;}
+      div#mark{width:180px;position:absolute;right:15px;}
+      div#mark p{float:left;margin-right:5px;line-height:20px;}
+      div#mark ul{list-style-type:none;}
+      div#mark ul li{float:left;margin-right:2px;cursor:pointer;background-color:white;}
+	  div#mark ul li img{display:block}
+      div#mark div{color:#9F2A01;font-size:1.0em;font-style:italic;margin-top:5px;}
+  </style>
+  </head>
+  <body>
+      <div id="box">
+          <div class="list">
+              <ul>
+                  <li><img src="images/01.jpg" width="490px" height="170px"></li>
+                  <li><img src="images/02.jpg" width="490px" height="170px"></li>
+                  <li><img src="images/03.jpg" width="490px" height="170px"></li>
+                  <li><img src="images/04.jpg" width="490px" height="170px"></li>
+                  <li><img src="images/05.jpg" width="490px" height="170px"></li>
+              </ul>
+              <div id="button">
+                  <span>1</span>
+                  <span>2</span>
+                  <span>3</span>
+                  <span>4</span>
+                  <span>5</span>
+              </div>
+          </div>
+      </div>
+      <div id="sec_box">
+          <div id="mark">
+              <p>影片评价</p>
+              <ul>
+                  <li><img src="images/星星.png"></li>
+                  <li><img src="images/星星.png"></li>
+                  <li><img src="images/星星.png"></li>
+                  <li><img src="images/星星.png"></li>
+                  <li><img src="images/星星.png"></li>
+              </ul>
+              <div>                                             
+              </div>                       
+          </div>
+      </div>
+  <script >
+//按钮悬停事件
+(function (){
+          var button=document.getElementById("button"),
+              span=button.getElementsByTagName("span"),
+              i,len;
+          var box=document.getElementById("box"),
+              ul=box.getElementsByTagName("ul")[0];
+          ul.style.top="0px";
+          for(i=0,len=span.length;i<len;i++){
+              span[i].number=i;
+              span[i].onmouseover=function (){          
+                  moveHeight(this.number);
+                  this.style.backgroundColor="#9F2A01";
+              }
+              span[i].onmouseout=function (){
+                  this.style.backgroundColor="#E1700A";
+              }
+          }
+     })();
+
+//图片移动动画效果函数
+function moveHeight(num){
+    var box=document.getElementById("box"),
+        list=box.getElementsByClassName("list")[0],
+        hei=list.clientHeight,
+        ul=box.getElementsByTagName("ul")[0],
+        height=num*hei,
+        i=-parseFloat(ul.style.top);
+    if (ul.movement){
+        clearTimeout(ul.movement);
+    }
+    if (i<height){
+        j=Math.ceil((height-i)/50);
+        i+=j;
+    }
+    if (i>height){
+        j=Math.ceil((i-height)/50);
+        i=i-j;
+    }
+    if (i==height){
+        return true;
+    }
+    ul.style.top=-i+'px';
+    var repeat="moveHeight('"+num+"')";
+    ul.movement=setTimeout(repeat,10);
+}
+
+//自动轮播图片
+(function (){
+    var bool=true,
+        index=0,
+        box=document.getElementById("box");
+    function next(){
+            var button=document.getElementById("button"),
+                span=button.getElementsByTagName("span"),
+                i,len;
+            bool?index++:index--;
+            if (index>=span.length-1){
+                bool=false;
+                index=span.length-1;
+            }else if (index<=0){
+                bool=true;
+                index=0;
+            }
+            moveHeight(index);
+            for(i=0,len=span.length;i<len;i++){
+                if (i==index){
+                    span[i].style.backgroundColor="#9F2A01";
+                }else{
+                    span[i].style.backgroundColor="#E1700A";
+                }
+            }
+        };           
+    window.onload=function (){
+        playTimer=setInterval(next,3000);
+    }
+    box.onmouseout=function (){
+        playTimer=setInterval(next,3000);
+    }
+    box.onmouseover=function (){
+        clearInterval(playTimer);
+    }    
+})();
+
+//评分系统
+//显示星星函数
+function showMark(num){
+   var div=document.getElementById("mark"),
+       ul=div.getElementsByTagName("ul")[0],
+       list=ul.getElementsByTagName("li"),
+       i,len;
+   for(i=0,len=list.length;i<len;i++){
+       if (i<=num){
+           list[i].style.backgroundColor="yellow";
+       }else{
+           list[i].style.backgroundColor="white";
+       }
+   }
+}
+
+//隐藏星星函数
+function hideMark(){
+    var div=document.getElementById("mark"),
+        ul=div.getElementsByTagName("ul")[0],
+        list=ul.getElementsByTagName("li"),
+        i,len;
+    for(i=0,len=list.length;i<len;i++){
+        list[i].style.backgroundColor="white";      
+    }
+}
+
+//显示文字函数
+function showWord(num){
+    var div=document.getElementById("mark"),
+        word=div.getElementsByTagName("div")[0]; 
+    switch (num){
+        case 0:
+            word.innerHTML="烂片";
+            break;
+        case 1:
+            word.innerHTML="一般";
+            break;
+        case 2:
+            word.innerHTML="不妨一看";
+            break;
+        case 3:
+            word.innerHTML="比较精彩";
+            break;
+        case 4:
+            word.innerHTML="神作";
+            break;
+        default:
+            word.innerHTML="";
+    }
+}
+
+//隐藏文字函数
+function hideWord(){
+    var div=document.getElementById("mark"),
+        word=div.getElementsByTagName("div")[0];           
+    word.innerHTML="";
+}
+
+//悬停、单击事件
+(function (){
+    var div=document.getElementById("mark"),
+        ul=div.getElementsByTagName("ul")[0],
+        list=ul.getElementsByTagName("li"),
+        i,len;
+    
+    for(i=0,len=list.length;i<len;i++){
+        list[i].num=i;
+        list[i].onmouseover=function (){
+            showMark(this.num);
+            showWord(this.num);
+            this.onmouseout=function (){
+                hideMark();
+                hideWord()
+            }           
+        }        
+        list[i].onclick=function (){
+            showMark(this.num);
+            this.onmouseout=function (){
+                if (event.preventDefault){
+                    event.preventDefault();
+                }else{
+                    window.event.returnValue=false;
+                };
+            } 
+       }
+    }
+})();
+  </script>
+  </body>
+</html>

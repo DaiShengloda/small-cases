@@ -1,0 +1,547 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>商品分类</title>
+<style>
+    *{margin:0px;padding:0px;font:Verdana, Geneva, sans-serif;}
+    #section{margin:100px 0px;width:100%;height:35px;;background-color:#cc0000;}
+	#nav{margin:0px auto;width:68%;}
+	#nav ul{list-style-type:none;}
+	#nav a{text-decoration:none;}
+	#nav .nav_list{float:left;margin-right:30px;font-size:1.1em;fonf-weight:bold;line-height:35px;}
+	#nav .nav_list_first{background-color:#990000;}
+	#nav .nav_list_first a{padding:0px 10px;}
+	#nav .nav_list a{color:white;}
+	#nav_ul{position:relative;background-color:#990000;z-index:1;}
+	#nav #nav_ul a{font-size:0.8em;color:white;font-weight:bold;}
+	
+	#nav_ul .color{border:1px solid #990000;border-right:none;background-color:#f2f2f2;cursor:pointer;}
+	#nav #nav_ul .color a{color:#262626;}
+	
+	.navmenu{position:absolute;top:135px;display:none;font-size:0.7em;border:1px solid #990000;border-top:none;background-color:#f2f2f2;}
+	.navmenu table{border-spacing:8px;}
+	.navmenu a{text-decoration:none;color:#222222;}	
+	.navmenu .navfirstcol a{font-size:1.2em;font-weight:bold;color:#e60000;}
+</style>
+</head>
+<body>
+
+    <div id="section">
+        <div id="nav">
+            <ul>
+                <li class="nav_list nav_list_first"><a href="">全部商品分类</a>
+                    <ul id="nav_ul">
+                        <li><a href="">男装/运动户外</a></li>
+                        <li><a href="">手机/电脑/数码</a></li>
+                        <li><a href="">鞋靴/箱包</a></li>
+                        <li><a href="">家用电器</a></li>
+                        <li><a href="">读书/音响/电子书</a></li>
+                    </ul>
+                </li>
+                <li class="nav_list"><a href="">推荐品牌</a></li>
+                <li class="nav_list"><a href="">女装</a></li>
+                <li class="nav_list"><a href="">男装</a></li>
+                <li class="nav_list"><a href="">鞋包配饰</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div>
+         <div class="navmenu">
+              <table>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">运动鞋包</a></td>
+                      <td><a href="#">跑步鞋</a></td>
+                      <td><a href="#">休闲鞋</a></td>
+                      <td><a href="#">篮球鞋</a></td>
+                      <td><a href="#">拖鞋</a></td>
+                      <td><a href="#">足球鞋</a></td>
+                      <td><a href="#">舞蹈鞋</a></td>
+                      <td><a href="#">训练鞋</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">运动服饰</a></td>
+                      <td><a href="#">运动裤</a></td>
+                      <td><a href="#">运动套装</a></td>
+                      <td><a href="#">运动背心</a></td>
+                      <td><a href="#">卫衣</a></td>
+                      <td><a href="#">棉服</a></td>
+                      <td><a href="#">毛衫</a></td>
+                      <td><a href="#">运动配饰</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">健身训练</a></td>
+                      <td><a href="#">跑步机</a></td>
+                      <td><a href="#">健身车</a></td>
+                      <td><a href="#">哑铃</a></td>
+                      <td><a href="#">收腹机</a></td>
+                      <td><a href="#">甩脂机</a></td>
+                      <td><a href="#">踏步机</a></td>
+                      <td><a href="#">瑜伽舞蹈</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#"></a></td>
+                      <td><a href="#">武术搏击</a></td>
+                      <td><a href="#">其他大型器材</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">骑行运动</a></td>
+                      <td><a href="#">山地车</a></td>
+                      <td><a href="#">折叠车</a></td>
+                      <td><a href="#">电动车</a></td>
+                      <td><a href="#">平衡车</a></td>
+                      <td><a href="#">骑行装备</a></td>
+                      <td><a href="#">骑行服</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">体育用品</a></td>
+                      <td><a href="#">乒乓球</a></td>
+                      <td><a href="#">羽毛球</a></td>
+                      <td><a href="#">篮球</a></td>
+                      <td><a href="#">足球</a></td>
+                      <td><a href="#">轮滑滑板</a></td>
+                      <td><a href="#">网球</a></td>
+                      <td><a href="#">高尔夫</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#"></a></td>
+                      <td><a href="#">台球</a></td>
+                      <td><a href="#">排球</a></td>
+                      <td><a href="#">棋牌麻将</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">户外装备</a></td>
+                      <td><a href="#">帐篷</a></td>
+                      <td><a href="#">望远镜</a></td>
+                      <td><a href="#">野餐烧烤</a></td>
+                      <td><a href="#">背包</a></td>
+                      <td><a href="#">睡袋</a></td>
+                      <td><a href="#">登山攀岩</a></td>
+                      <td><a href="#">极限户外</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#"></a></td>
+                      <td><a href="#">冲浪潜水</a></td>
+                      <td><a href="#">滑雪装备</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">垂钓用具</a></td>
+                      <td><a href="#">鱼竿鱼线</a></td>
+                      <td><a href="#">浮漂鱼饵</a></td>
+                      <td><a href="#">钓鱼桌椅</a></td>
+
+                      <td><a href="#">钓鱼箱包</a></td>
+                      <td><a href="#">其他</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">钟表</a></td>
+                      <td><a href="#">瑞表</a></td>
+                      <td><a href="#">国表</a></td>
+                      <td><a href="#">日韩表</a></td>
+                      <td><a href="#">德表</a></td>
+                      <td><a href="#">欧美表</a></td>
+                      <td><a href="#">闹钟</a></td>
+                      <td><a href="#">挂钟</a></td>
+                  </tr>
+              </table>
+          </div>  
+    
+          <div class="navmenu">
+              <table>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">电脑整机</a></td>
+                      <td><a href="#">笔记本</a></td>
+                      <td><a href="#">游戏本</a></td>
+                      <td><a href="#">平板电脑</a></td>
+                      <td><a href="#">台式机</a></td>
+                      <td><a href="#">一体机</a></td>
+                      <td><a href="#">服务站</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">电脑配件</a></td>
+                      <td><a href="#">显示器</a></td>
+                      <td><a href="#">CPU</a></td>
+                      <td><a href="#">主板</a></td>
+                      <td><a href="#">硬盘</a></td>
+                      <td><a href="#">机箱</a></td>
+                      <td><a href="#">散热器</a></td>
+                      <td><a href="#">声卡</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#"></a></td>
+                      <td><a href="#">显卡</a></td>
+                      <td><a href="#">SSD固态硬盘</a></td>
+                      <td><a href="#">组装电脑</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">外设产品</a></td>
+                      <td><a href="#">鼠标</a></td>
+                      <td><a href="#">键盘</a></td>
+                      <td><a href="#">网络仪表仪器</a></td>
+                      <td><a href="#">移动硬盘</a></td>
+                      <td><a href="#">摄像头</a></td>
+                      <td><a href="#">手写板</a></td>
+                      <td><a href="#">电脑清洁</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">游戏设备</a></td>
+                      <td><a href="#">游戏机</a></td>
+                      <td><a href="#">游戏耳机</a></td>
+                      <td><a href="#">手柄</a></td>
+                      <td><a href="#">游戏软件</a></td>
+                      <td><a href="#">游戏周边</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">网络产品</a></td>
+                      <td><a href="#">路由器</a></td>
+                      <td><a href="#">网络机顶盒</a></td>
+                      <td><a href="#">交换机</a></td>
+                      <td><a href="#">网卡</a></td>
+                      <td><a href="#">4G/3G上网</a></td>
+                      <td><a href="#">网络配件</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">办公设备</a></td>
+                      <td><a href="#">摄影机</a></td>
+                      <td><a href="#">多功能一体机</a></td>
+                      <td><a href="#">打印机</a></td>
+                      <td><a href="#">传真设备</a></td>
+                      <td><a href="#">点钞机</a></td>
+                      <td><a href="#">复合机</a></td>
+                      <td><a href="#">碎纸机</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#"></a></td>
+                      <td><a href="#">考勤机</a></td>
+                      <td><a href="#">收音机</a></td>
+                      <td><a href="#">保险柜</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">文具耗材</a></td>
+                      <td><a href="#">墨粉</a></td>
+                      <td><a href="#">色带</a></td>
+                      <td><a href="#">办公用具</a></td>
+                      <td><a href="#">学生用具</a></td>
+                      <td><a href="#">便签</a></td>
+                      <td><a href="#">计算器</a></td>
+                      <td><a href="#">笔类</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#"></a></td>
+                      <td><a href="#">财会用品</a></td>
+                      <td><a href="#">画具画材</a></td>
+                  </tr> 
+                  <tr>
+                      <td class="navfirstcol"><a href="#">服务产品</a></td>
+                      <td><a href="#">延保服务</a></td>
+                      <td><a href="#">上门安装</a></td>
+                      <td><a href="#">维修保养</a></td>
+                      <td><a href="#">电脑软件</a></td>
+                  </tr>    
+              </table>
+          </div>
+          
+          <div class="navmenu">
+              <table>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">时尚女鞋</a></td>
+                      <td><a href="#">女靴</a></td>
+                      <td><a href="#">单鞋</a></td>
+                      <td><a href="#">高跟鞋</a></td>
+                      <td><a href="#">绣花鞋</a></td>
+                      <td><a href="#">裸靴</a></td>
+                      <td><a href="#">雪地靴</a></td>
+                      <td><a href="#">帆布鞋</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#"></a></td>
+                      <td><a href="#">凉鞋</a></td>
+                      <td><a href="#">雨鞋</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">流行男鞋</a></td>
+                      <td><a href="#">商务休闲鞋</a></td>
+                      <td><a href="#">正装鞋</a></td>
+                      <td><a href="#">男靴</a></td>
+                      <td><a href="#">帆布鞋</a></td>
+                      <td><a href="#">功能鞋</a></td>
+                      <td><a href="#">定制鞋</a></td>
+                      <td><a href="#">人字拖</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#"></a></td>
+                      <td><a href="#">沙滩鞋</a></td>
+                      <td><a href="#">布鞋</a></td>
+                      <td><a href="#">鞋配件</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">潮流女包</a></td>
+                      <td><a href="#">单肩包</a></td>
+                      <td><a href="#">手提包</a></td>
+                      <td><a href="#">双肩包</a></td>
+                      <td><a href="#">钱包</a></td>
+                      <td><a href="#">手拿包</a></td>
+                      <td><a href="#">钥匙包</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">精品男包</a></td>
+                      <td><a href="#">男士钱包</a></td>
+                      <td><a href="#">斜挎包</a></td>
+                      <td><a href="#">商务公文包</a></td>
+                      <td><a href="#">卡包</a></td>
+                      <td><a href="#">双肩包</a></td>
+                      <td><a href="#">男士手包</a></td>
+                      <td><a href="#">钥匙包</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">功能箱包</a></td>
+                      <td><a href="#">拉杆箱</a></td>
+                      <td><a href="#">旅行包</a></td>
+                      <td><a href="#">电脑包</a></td>
+                      <td><a href="#">休闲运动包</a></td>
+                      <td><a href="#">书包</a></td>
+                      <td><a href="#">登山包</a></td>
+                      <td><a href="#">胸包</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">奢饰品</a></td>
+                      <td><a href="#">箱包</a></td>
+                      <td><a href="#">钱包</a></td>
+                      <td><a href="#">腰饰</a></td>
+                      <td><a href="#">鞋靴</a></td>
+                      <td><a href="#">太阳镜</a></td>
+                      <td><a href="#">饰品</a></td>
+                  </tr>
+              </table>
+          </div>
+          
+          <div class="navmenu">
+              <table>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">电视</a></td>
+                      <td><a href="#">合资品牌</a></td>
+                      <td><a href="#">国产品牌</a></td>
+                      <td><a href="#">互联网品牌</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">空调</a></td>
+                      <td><a href="#">壁挂式空调</a></td>
+                      <td><a href="#">柜式空调</a></td>
+                      <td><a href="#">中央空调</a></td>
+                      <td><a href="#">空调配件</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">洗衣机</a></td>
+                      <td><a href="#">滚筒洗衣机</a></td>
+                      <td><a href="#">洗烘一体机</a></td>
+                      <td><a href="#">波轮洗衣机</a></td>
+                      <td><a href="#">迷你洗衣机</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">冰箱</a></td>
+                      <td><a href="#">多门</a></td>
+                      <td><a href="#">对开门</a></td>
+                      <td><a href="#">三门</a></td>
+                      <td><a href="#">双门</a></td>
+                      <td><a href="#">冷柜</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">厨卫大电</a></td>
+                      <td><a href="#">油烟机</a></td>
+                      <td><a href="#">燃气灶</a></td>
+                      <td><a href="#">消毒柜</a></td>
+                      <td><a href="#">洗碗机</a></td>
+                      <td><a href="#">电热水器</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">厨房小电</a></td>
+                      <td><a href="#">电饭煲</a></td>
+                      <td><a href="#">微波炉</a></td>
+                      <td><a href="#">电压力锅</a></td>
+                      <td><a href="#">咖啡机</a></td>
+                      <td><a href="#">面包机</a></td>
+                      <td><a href="#">榨汁机</a></td>
+                      <td><a href="#">豆浆机</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"></td>
+                      <td><a href="#">养生壶</a></td>
+                      <td><a href="#">酸奶机</a></td>
+                      <td><a href="#">电水壶</a></td>
+                      <td><a href="#">煮蛋器</a></td>
+                      <td><a href="#">电炖锅</a></td>
+                      <td><a href="#">电烧烤炉</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">生活电器</a></td>
+                      <td><a href="#">吸尘器</a></td>
+                      <td><a href="#">净化器</a></td>
+                      <td><a href="#">加湿器</a></td>
+                      <td><a href="#">挂烫机</a></td>
+                      <td><a href="#">电风扇</a></td>
+                      <td><a href="#">冷风扇</a></td>
+                      <td><a href="#">插座</a></td>
+                      <td><a href="#">电话机</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"></td>
+                      <td><a href="#">饮水机</a></td>
+                      <td><a href="#">干衣机</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">个护健康</a></td>
+                      <td><a href="#">剃须刀</a></td>
+                      <td><a href="#">美容器</a></td>
+                      <td><a href="#">理发器</a></td>
+                      <td><a href="#">足浴盆</a></td>
+                      <td><a href="#">按摩抢</a></td>
+                  </tr>
+              </table>
+          </div>
+          
+          <div class="navmenu">
+              <table>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">音像</a></td>
+                      <td><a href="#">音乐</a></td>
+                      <td><a href="#">影视</a></td>
+                      <td><a href="#">游戏</a></td>
+                      <td><a href="#">动漫周边</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">少儿</a></td>
+                      <td><a href="#">0-2岁</a></td>
+                      <td><a href="#">3-6岁</a></td>
+                      <td><a href="#">7-10岁</a></td>
+                      <td><a href="#">11-14岁</a></td>
+                      <td><a href="#">儿童文学</a></td>
+                      <td><a href="#">科普</a></td>
+                      <td><a href="#">智力开发</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">教育</a></td>
+                      <td><a href="#">教材</a></td>
+                      <td><a href="#">中小学辅导</a></td>
+                      <td><a href="#">考试</a></td>
+                      <td><a href="#">外语学习</a></td>
+                      <td><a href="#">字典词典</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">文艺</a></td>
+                      <td><a href="#">小说</a></td>
+                      <td><a href="#">文学</a></td>
+                      <td><a href="#">青春文学</a></td>
+                      <td><a href="#">传记</a></td>
+                      <td><a href="#">动漫</a></td>
+                      <td><a href="#">艺术</a></td>
+                      <td><a href="#">音乐</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">人文社科</a></td>
+                      <td><a href="#">历史</a></td>
+                      <td><a href="#">心理学</a></td>
+                      <td><a href="#">政治</a></td>
+                      <td><a href="#">国学</a></td>
+                      <td><a href="#">哲学</a></td>
+                      <td><a href="#">社会科学</a></td>
+                      <td><a href="#">法律</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">生活</a></td>
+                      <td><a href="#">家教</a></td>
+                      <td><a href="#">胎教</a></td>
+                      <td><a href="#">健身保健</a></td>
+                      <td><a href="#">旅游</a></td>
+                      <td><a href="#">美食</a></td>
+                      <td><a href="#">时尚美妆</a></td>
+                      <td><a href="#">家居</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">科技</a></td>
+                      <td><a href="#">互联网</a></td>
+                      <td><a href="#">建筑</a></td>
+                      <td><a href="#">工业技术</a></td>
+                      <td><a href="#">电子</a></td>
+                      <td><a href="#">医学</a></td>
+                      <td><a href="#">科学与自然</a></td>
+                      <td><a href="#">农林</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">刊/原版</a></td>
+                      <td><a href="#">杂志</a></td>
+                      <td><a href="#">英文原版书</a></td>
+                      <td><a href="#">港台读书</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">电子书</a></td>
+                      <td><a href="#">畅读VIP</a></td>
+                      <td><a href="#">小说</a></td>
+                      <td><a href="#">励志与成功</a></td>
+                      <td><a href="#">经济金融</a></td>
+                      <td><a href="#">文学</a></td>
+                      <td><a href="#">社科</a></td>
+                      <td><a href="#">婚姻两性</a></td>
+                  </tr>
+                  <tr>
+                      <td class="navfirstcol"><a href="#">数字音乐</a></td>
+                      <td><a href="#">通俗流行</a></td>
+                      <td><a href="#">古典音乐</a></td>
+                      <td><a href="#">摇滚说唱</a></td>
+                      <td><a href="#">爵士蓝调</a></td>
+                      <td><a href="#">乡村民谣</a></td>
+                      <td><a href="#">有声读物</a></td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+          
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+<!--
+<script src="../scripts/jquery-1.11.1.min.js"></script>
+-->
+<script>
+    
+	$(function(){
+		/***
+		***绝对定位、hover事件
+		***/
+		
+		//下拉菜单
+		$("#nav_ul li").hover(function(){
+			$(this).addClass("color")
+			    .siblings().removeClass("color");
+			var lef=$(this).offset().left+$(this)[0].offsetWidth-1,
+			    dex=$(this).index();
+			$(".navmenu").eq(dex).css({"left":lef+"px","display":"block"})
+		},function(){
+			$(this).removeClass("color");
+			$(".navmenu").css({"display":"none"});
+		});
+		
+		//侧边栏菜单
+	    $(".navmenu").hover(function(){
+			var dex=$(this).index();
+			$("#nav_ul li").eq(dex).addClass("color");
+			$(this).css({"display":"block"})
+			    .siblings().css({"display":"none"});
+		},function(){
+			$(".navmenu").css({"display":"none"});
+			$("#nav_ul li").removeClass("color");
+		});
+		
+		//侧边栏链接
+		$(".navmenu a").hover(function(){
+			$(this).css({"text-decoration":"underline"});
+		},function(){
+			$(this).css({"text-decoration":"none"});
+		});
+		
+		
+	});
+	
+</script>
+</body>
+</html>

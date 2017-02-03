@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片跟随效果</title>
+<style>
+    body *{margin:0px;padding:0px;border:none;text-decoration:none;}
+	#box{margin:20px auto;width:700px;}
+	#box img{margin-right:20px;width:145px;height:145px;border:1px #ccc solid;}
+	#big{position:absolute;display:none;}
+	#big img{border:2px #ccc solid;}	
+</style>
+</head>
+<body>
+    
+    <div id="box">
+        <img src="images/7.jpg" alt="7">
+        <img src="images/8.jpg" alt="8">
+        <img src="images/9.jpg" alt="9">
+        <img src="images/10.jpg" alt="10">
+    </div>
+    <div id="big"></div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+<!--
+<script src="../scripts/jquery-1.11.1.min.js"></script>
+-->
+<script>
+
+    $("img").mousemove(function(event){
+	    var pic_src=$(this).attr("src"),
+		    x=event.clientX+15,
+			y=event.clientY+15;
+	    $(this).css({"border":"1px #D40000 solid","cursor":"pointer"});
+		$("#big").html("<img src="+pic_src+">")
+		    .css({"display":"block","left":x+"px","top":y+"px"});			
+	}).mouseout(function(){
+		$("#big").css({"display":"none"});
+		$(this).css({"border":"1px #ccc solid","cursor":"default"});
+	});
+	
+</script>   
+</body>
+</html>

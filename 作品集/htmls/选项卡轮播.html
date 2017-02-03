@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>选项卡轮播</title>
+<style>
+    *{margin:0px;padding:0px;border:0px;} 
+	body{font-family:Verdana, Geneva, sans-serif;}
+	#container{margin:50px auto;padding:10px;width:500px;height:265px;border:1px solid #888888;}
+	#container ul{list-style-type:none;}
+	#container a{text-decoration:none;}
+	img{width:400px;height:240px;display:block;}
+	
+	#nav{height:25px;}
+	#nav span{
+		float:left;
+		margin-right:10px;
+		width:4.5em;
+		height:25px;
+		line-height:25px;
+		text-align:center;
+		background-color:#f2f2f2;
+	}
+	#nav .color{background-color:#b30000;}
+	#nav .color a{color:white;}
+	#nav span a{font-size:0.7em;color:#222222;}
+	
+	.box{position:relative;height:240px;overflow:hidden;display:none;}
+	.box ul{float:right;}
+	.box .pic{position:absolute;}
+	.box .word li{
+		width:100px;
+		line-height:30px;
+		text-align:center;
+		border-bottom:1px solid #888888;
+		background-color:#f2f2f2;
+	}
+	.box .word .color2{background-color:#262626;}
+	.box .word .color2 a{color:white;}
+	.box .word a{font-size:0.8em;color:#222222;}
+</style>
+</head>
+<body>
+
+   <div id="container">
+   
+       <div id="nav">          
+           <span><a href="">时尚女装</a></span>
+           <span><a href="">休闲男装</a></span>
+       </div>
+
+       <div>
+       <div class="box">
+           <ul class="pic">
+               <li><a href=""><img src="images/27.jpg" alt="24"></a></li>
+               <li><a href=""><img src="images/28.jpg" alt="25"></a></li>
+               <li><a href=""><img src="images/29.jpg" alt="26"></a></li>
+           </ul>
+           <ul class="word">
+               <li><a href="">气质风衣</a></li>
+               <li><a href="">真丝衬衫</a></li>
+               <li><a href="">潮流羽绒</a></li>
+           </ul>
+       </div>
+       
+       <div class="box">
+           <ul class="pic">
+               <li><a href=""><img src="images/24.jpg" alt="24"></a></li>
+               <li><a href=""><img src="images/25.jpg" alt="25"></a></li>
+               <li><a href=""><img src="images/26.jpg" alt="26"></a></li>
+           </ul>
+           <ul class="word">
+               <li><a href="">休闲西服</a></li>
+               <li><a href="">经典衬衫</a></li>
+               <li><a href="">时尚T恤</a></li>
+           </ul>
+       </div>
+       
+       </div>
+                    
+   </div>
+
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+<!-- 
+<script src="../scripts/jquery-1.11.1.min.js"></script>
+-->
+<script>
+    
+	$(function(){
+		
+		//主标题滚动
+		var num=1;	   
+		$("#nav span").eq(0).addClass("color");
+		function nav(){
+			playTimer=setInterval(		    
+			    function(){
+					var len=$("#nav span").length;
+					num=(num==len)?0:num; 
+					$("#nav span").eq(num).addClass("color");
+					$("#nav span").eq(num).siblings().removeClass("color");
+					animate(num);
+					num++;
+			    },4500)		
+		};
+		nav();
+		
+		
+		//图片滚动
+		function animate(i){
+			var $box=$(".box").eq(i),
+			    len=$box.find(".pic li").length;	
+			$box.show()
+			    .siblings().hide();		 
+			$box.find(".word li").eq(0).addClass("color2");
+			for(var j=0;j<len;j++){
+			    set(i,j);	
+			}
+		};
+        animate(0);
+		
+		//设置延迟
+		function set(i,j){
+			var $box=$(".box").eq(i);
+			setTimeout(
+				function(){
+					$box.find(".pic").css({"top":-240*j+"px"});
+					$box.find(".word li").eq(j).addClass("color2");
+					$box.find(".word li").eq(j).siblings().removeClass("color2");
+			},j*1500)
+		};
+
+		
+	});
+	
+</script>
+</body>
+</html>

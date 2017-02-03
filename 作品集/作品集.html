@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>作品集</title>
+    <style type="text/css" rel="stylesheet">
+	  	ol{width:500px;margin:2% auto;padding:40px 80px;font-size:1.5em;font-weight:bold;border:1px solid #cccccc;}
+		ol ul{list-style-type:none;display:none;}
+		ol ul a{text-decoration:none;color:#3395ff;}
+		ol li{line-height:2em;border-radius:10px;color:#0063cc;}
+		ol>li{border-bottom:1px solid #f2f2f2;cursor:pointer;}
+		ol li.myColor{background:#009900;}
+		ol li.myColor a{color:white;}
+	</style>
+    <!--
+    <script src="scripts/jquery-1.11.1.min.js"></script>
+    -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</head>
+<body>
+
+    <ol>
+    
+        <li><span class="myTitle" name="0">第一章 表单常用代码</span>
+            <ul>
+                <li><a href="htmls/限制输入数字、正反选.html" target="_blank">正反选/禁止数字输入</a></li>
+                <li><a href="htmls/禁止中文输入、禁止复制粘贴、过滤敏感词.html" target="_blank">过滤敏感词/禁止中文输入</a></li>
+                <li><a href="htmls/级联菜单.html" target="_blank">级联菜单/动态操作选项</a></li>
+            </ul>
+        </li>
+        
+        <li><span class="myTitle" name="1">第二章 图片常用代码</span>
+            <ul>
+                <li><a href="htmls/自动轮播图片.html" target="_blank">自动轮播图片/星级评分</a></li>
+                <li><a href="htmls/选项卡轮播.html" target="_blank">选项卡轮播</a></li>
+                <li><a href="htmls/3D轮播图.html" target="_blank">3D轮播图</a></li>
+                <li><a href="htmls/放大镜图片.html" target="_blank">放大镜图片</a></li>
+                <li><a href="htmls/图片跟随效果.html" target="_blank">图片跟随效果</a></li>
+                <li><a href="htmls/css3遮罩.html" target="_blank">css3遮罩</a></li>              
+            </ul>
+        </li>
+        
+        <li><span class="myTitle" name="2">第三章 内容展示常用代码</span>
+            <ul>
+                <li><a href="htmls/商品分类.html" target="_blank">商品分类</a></li>
+                <li><a href="htmls/Tab栏切换.html" target="_blank">Tab栏切换</a></li>
+                <li><a href="htmls/拖动验证.html" target="_blank">拖动验证</a></li>
+                <li><a href="htmls/动态生成表格.html" target="_blank">动态生成表格</a></li>
+            </ul>
+        </li>
+        
+        <li><span class="myTitle" name="3">第四章 其他</span>
+            <ul>              
+                <li><a href="htmls/时钟.html" target="_blank">时钟</a></li>
+                <li><a href="htmls/拖拽.html" target="_blank">拖拽</a></li>
+                <li><a href="htmls/拼图游戏.html" target="_blank">canvas拼图游戏</a></li>
+                <li><a href="htmls/3D图片环.html" target="_blank">3D图片环(不兼容Ie)</a></li>
+                <li><a href="htmls/烟花.html" target="_blank">烟花</a></li>
+            </ul>
+        </li>
+
+    </ol>
+    
+<script>
+    $(function(){
+		
+		$("ul li").hover(function(){
+			$(this).addClass("myColor")
+			    .stop().animate({"padding-left":"4%"},400);
+		},function(){
+			$(this).removeClass("myColor")
+			   .stop().animate({"padding-left":"0%"},400); 
+		});
+		
+		$("span.myTitle").click(function(){
+			//event.preventDefault();
+			var num=$(this).attr("name"),
+			    len=$("ul").length;
+			for(var i=0;i<len;i++){
+				if (i==num){
+			        $("ul").eq(num).toggle(400);
+				}else{
+					$("ul").eq(i).hide(400);
+				}
+			}		 
+		}).hover(function(){
+			$(this).stop().animate({"padding-left":"4%"},400);
+		},function(){
+			$(this).stop().animate({"padding-left":"0%"},400); 
+		});
+			
+	});
+</script>  
+</body>
+</html>

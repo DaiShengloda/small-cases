@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css3遮罩</title>
+<style>
+    *{margin:0px;padding:0px;}
+	body{background-color:#4d4d4d;}
+	#container{margin:80px auto;width:82%;}
+	h1{
+		margin:0px auto;
+		width:4.0em;
+		text-align:center;
+		font-size:2.5em;
+		font-style:italic;		
+		box-shadow:-2px 0 5px #333333,2px 0 5px white,0 -2px 5px white,0 2px 5px white;
+		border-radius:5px;		
+		color:#e60000;
+		background-color:#333333;
+	}
+	.box{position:relative;float:left;width:16%;margin:2% 2% 0 0;border:6px solid #666666;overflow:hidden;cursor:pointer;}
+	.box img.pic{width:100%;heigh:100%;display:block;}
+	.box .layer{
+		position:absolute;
+	    left:0px;
+		top:0px;
+		padding-top:15%;
+		width:100%;
+		height:100%;
+		
+		text-align:center;
+		background:#ff4d4d;
+		opacity:0.7;
+		
+		transform:rotateZ(90deg);
+		transform-origin:bottom right;
+		transition:all ease 0.4s;				
+	}
+	.box .layer p{font-size:0.8em;font-weight:bold;color:white;}
+	.box .layer p.name{font-size:1.2em;}
+	.box:hover .layer{
+	    transform:rotateZ(0deg);	
+	}
+</style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>电影人</h1>
+        
+        <div class="box">
+            <img src="images/14.png" alt="14" class="pic">
+            <div class="layer">
+               <img src="images/logo.png" alt="logo">
+               <p>AMERICA</p>
+               <p class="name">阿尔 帕西诺</p>
+               <p>---教父</p>  
+            </div>
+        </div>
+        
+        <div class="box">
+            <img src="images/19.png" alt="19" class="pic">
+            <div class="layer">
+                <img src="images/logo.png" alt="logo">
+                <p>CHINA</p>
+                <p class="name">梁朝伟</p>
+                <p>---花样年华</p>
+            </div>
+        </div>
+        
+        <div class="box">
+            <img src="images/16.png" alt="16" class="pic">
+            <div class="layer">
+                <img src="images/logo.png" alt="logo">
+                <p>AMERICA</p>
+                <p class="name">罗伯特 德尼罗</p>
+                <p>---盗火线</p>
+            </div>
+        </div>
+        
+        <div class="box">
+            <img src="images/17.png" alt="17" class="pic">
+            <div class="layer">
+                <img src="images/logo.png" alt="logo">
+                <p>KOREA</p>
+                <p class="name">黄政民</p>
+                <p>---新世界</p>
+            </div>
+        </div>
+        
+        <div class="box">
+            <img src="images/18.png" alt="18" class="pic">
+            <div class="layer">
+                <img src="images/logo.png" alt="logo">
+                <p>CHINA</p>
+                <p class="name">姜文</p>
+                <p>---让子弹飞</p>
+            </div>
+        </div>
+        
+        <div class="box">
+            <img src="images/15.png" alt="15" class="pic">
+            <div class="layer">
+                <img src="images/logo.png" alt="logo">
+                <p>KOREA</p>
+                <p class="name">崔岷植</p>
+                <p>---老男孩</p>
+            </div>
+        </div>
+        
+        <div class="box">
+            <img src="images/22.png" alt="22" class="pic">
+            <div class="layer">
+                <img src="images/logo.png" alt="logo">
+                <p>CHINA</p>
+                <p class="name">周星驰</p>
+                <p>---大话西游</p>
+            </div>          
+        </div>
+        
+        <div class="box">
+            <img src="images/21.png" alt="21" class="pic">
+            <div class="layer">
+                <img src="images/logo.png" alt="logo">
+                <p>CHINA</p>
+                <p class="name">张国荣</p>
+                <p>---霸王别姬</p>
+            </div>
+        </div>
+        
+        <div class="box">
+            <img src="images/20.png" alt="20" class="pic">
+            <div class="layer">
+                <img src="images/logo.png" alt="logo">
+                <p>KOREA</p>
+                <p class="name">河正宇</p>
+                <p>---黄海</p>
+            </div>
+        </div>
+        
+        <div class="box">
+            <img src="images/23.png" alt="23" class="pic">
+            <div class="layer">
+                <img src="images/logo.png" alt="logo">
+                <p>CHINA</p>
+                <p class="name">张学友</p>
+                <p>---东邪西毒</p>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>

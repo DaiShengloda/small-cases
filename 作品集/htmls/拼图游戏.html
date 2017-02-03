@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>拼图游戏</title>
+<style>
+    body *{border:0px;padding:0px;margin:0px;text-decoration:none;}
+	#container{margin-top:30px;}
+	#box1{float:left;margin:0px 50px;width:200px;height:auto;}
+	#box1 button{
+		width:4em;
+		height:1.8em;
+		border-radius:2px;
+	    border:solid 1px #888888;
+		box-shadow:4px 4px 5px #A0A0A4;
+		cursor:pointer;
+		font-weight:bold;
+    }
+	#box1 img{width:200px;height:200px;border:2px solid #888888;}
+	#ctx{border:2px solid #ccc;background:#ffbf80;}
+</style>
+</head>
+<body>
+
+    <div id="container"> 
+    
+        <div id="box1">
+            <img id="pic" src="images/11.jpg" alt="11">
+            <button id="pre">上一张</button>
+            <button id="next">下一张</button>
+            <button id="sure">确定</button><br><br>
+            <button id="easy">简单</button>
+            <button id="mid">中等</button>
+            <button id="hard">困难</button><br><br> 
+            <label>等级:</label><input type="text" id="degree" name="degree">
+            
+            <div style="font-size:0.8em;color:#555555;margin-top:140px;">
+                注：请使用firefox打开，chrome/ie图片存在跨域问题
+            </div>        
+        </div>
+      
+        <canvas id="ctx" width="540px" height="540px">
+            你的浏览器不支持canvas!
+        </canvas>
+        
+        
+              
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+<!--
+<script src="../scripts/jquery-1.11.1.min.js"></script>
+-->
+<script>
+    
+	$(function(){
+		
+		//下一张
+		function next(){		
+				var num=$("#pic").attr("alt");				
+				if (num<13){
+				    num++;	
+				}else{
+					num=11;
+				};
+				$("#pic").attr({"src":"images/"+num+".jpg","alt":num});
+		};		
+		$("#next").click(function(){
+			next();
+		});
+		
+		//上一张
+		function pre(){		
+				var num=$("#pic").attr("alt");				
+				if (num>11){
+				    num--;	
+				}else{
+					num=13;
+				};
+				$("#pic").attr({"src":"images/"+num+".jpg","alt":num});		
+		};		
+		$("#pre").click(function(){
+			pre();
+		});
+			
+		//确定按钮
+		var c=$("#ctx")[0],
+		    ctx=c.getContext("2d");	
+		$("#sure").click(function(){
+			var img=$("#pic")[0];
+			ctx.drawImage(img,0,0,540,540);
+		});
+		
+		//二维数组	
+		var arr=new Array();    //arr二维数组重排碎片是计算是否占位
+		var brr=new Array();    //brr二维数组检测是否完成拼图
+		function arry(i){				
+			for(var x=0;x<i;x++){
+				arr[x]=new Array();
+				brr[x]=new Array();
+				for(var y=0;y<i;y++){
+				    arr[x][y]=0;
+					brr[x][y]=10*x+y;	
+				}
+			}
+		};
+		
+		//随机生成坐标
+		var coor_x,coor_y;
+		function newCoor(i){
+			coor_x=Math.floor(Math.random()*i);
+			coor_y=Math.floor(Math.random()*i);
+			if (arr[coor_x][coor_y]==0){
+			    return coor_x,coor_y;	
+			}else{
+			    newCoor(i);	
+			}			
+		}
+		
+		//分割图片
+		var img_data;    //存储整图信息
+		function cut(i){
+			var m=540/i;
+			out_cut:					
+			for(var x=0;x<i;x++){
+				for(var y=0;y<i;y++){ 
+				    if (x==i-1&&y==i-1){
+					    break out_cut;	
+					}else{
+					    newCoor(i);
+					    img_data=$("#pic")[0];
+			            ctx.drawImage(img_data,x*m,y*m,m,m,coor_x*m,coor_y*m,m,m);
+						arr[coor_x][coor_y]=1;
+						brr[coor_x][coor_y]=10*x+y;    //打碎图片后为每个碎片图片赋值
+					}
+				}
+			}
+		};
+		
+		//简单
+		$("#easy").click(function(){
+			$("#degree").val($("#easy").text());
+		    arry(3);
+			ctx.clearRect(0,0,540,540);
+			cut(3);
+			blank(3);
+		});
+		
+		//中等
+		$("#mid").click(function(){
+			$("#degree").val($("#mid").text());
+		    arry(4);
+			ctx.clearRect(0,0,540,540);
+			cut(4);
+			blank(4);
+		});
+		
+		//困难
+		$("#hard").click(function(){
+			$("#degree").val($("#hard").text());
+		    arry(5);
+			ctx.clearRect(0,0,540,540);
+			cut(5);
+			blank(5);
+		});
+		  
+		//取得空白块坐标
+		var blank_x,blank_y;
+		function blank(i){
+			outer_blank:
+			for(var x=0;x<i;x++){
+				for(var y=0;y<i;y++){
+					if (arr[x][y]==0){
+					    blank_x=x;
+						blank_y=y;	
+						break outer_blank;
+					}
+				}
+			}
+		};
+		
+		//移动图片块
+		function changeImg(i){
+			var m=540/i;
+			var imgData=ctx.getImageData(click_x*m,click_y*m,m,m);
+			var val=brr[click_x][click_y];                  //获得图片的值
+		    ctx.putImageData(imgData,blank_x*m,blank_y*m);
+			brr[blank_x][blank_y]=val;                      //图片移动后值不变
+			ctx.clearRect(click_x*m,click_y*m,m,m);
+		    blank_x=click_x;
+		    blank_y=click_y;						
+		};
+				
+		//开始游戏
+		var click_x,click_y;
+		var click_left,click_top; 
+		function play(i){
+		    var m=540/i;
+			click_x=Math.floor(click_left/m);
+			click_y=Math.floor(click_top/m);
+			if (click_x==blank_x){
+				if (click_y==blank_y+1||click_y==blank_y-1){
+					changeImg(i);	
+				}
+			}else if(click_y==blank_y){
+				if (click_x==blank_x+1||click_x==blank_x-1){
+					changeImg(i);	
+				}
+			}
+		};
+        
+		//检测是否完成
+		function check(i){
+			var m=540/i;
+			out_check:
+			for(var x=0;x<i;x++){
+			    for(var y=0;y<i;y++){
+					if ((x+y)!==2*(i-1)){
+						if (brr[x][y]!==(10*x+y)){  //检测图片的值是否符合
+					        break out_check;	
+					    }
+					}else if(x==i-1&&y==i-1){
+						ctx.drawImage(img_data,0,0,540,540);  //补全图片右下角
+						alert("恭喜你！");
+					}
+				}
+			}		
+		};
+		
+		
+		//图片移动
+		$("#ctx").click(function(event){
+			click_left=event.clientX-$("#ctx").offset().left;
+			click_top=event.clientY-$("#ctx").offset().top;
+			var tex=$("#degree").val();
+			if (tex=="简单"){
+				play(3);
+				check(3);
+			}else if(tex=="中等"){
+				play(4);
+				check(4);
+			}else if(tex=="困难"){
+				play(5);
+				check(5);
+			}			
+		});
+		   
+	});
+
+	
+</script>
+</body>
+</html>

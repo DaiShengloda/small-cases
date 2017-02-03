@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tab栏切换</title>
+<style>
+    *{margin:0px;padding:0px;border:0px;}
+    #container{width:800px;margin:80px auto;}
+	#container ul{list-style-type:none}
+	#container a{text-decoration:none;}
+	#container img{width:100%;border-radius:8px;}
+	
+	#nav{padding-left:10px;width:100%;height:30px;background-color:#e6e6e6;border-bottom:1px solid #aaaaaa;}
+	#nav li{float:left;height:30px;line-height:30px;width:5.0em;text-align:center;}
+	#nav li a{font-size:0.9em;color:#666666;}
+	#nav .color{background-color:#f2f2f2;border:1px solid #aaaaaa;border-bottom:1px solid #f2f2f2;}
+	#nav .color a{color:black;}
+	
+	.box{
+		display:none;
+		margin-top:1px;
+		width:810px;
+		height:150px;
+		background-color:#f2f2f2;
+		border-radius:0px 0px 8px 8px;
+	}
+	.box li{float:left;margin:10px;width:140px;}
+	.box .pic_title{font-size:0.9em;text-decoration:underline;color:blue;}
+</style>
+</head>
+<body>
+
+    <div id="container">
+    
+        <div id="nav">
+            <ul>
+                <li><a href="">最新推荐</a></li>
+                <li><a href="">休闲益智</a></li>
+                <li><a href="">动作游戏</a></li>
+                <li><a href="">破解游戏</a></li>
+            </ul>
+        </div>
+        
+        <div>
+        
+        <div class="box">
+            <ul>
+                <li><a href=""><img src="images/30.jpg" alt="30"><p class="pic_title">剑侠情缘</p></a></li>
+                <li><a href=""><img src="images/31.jpg" alt="31"><p class="pic_title">九阴真经3D</p></a></li>
+                <li><a href=""><img src="images/32.jpg" alt="32"><p class="pic_title">鬼吹灯3D</p></a></li>
+                <li><a href=""><img src="images/33.jpg" alt="33"><p class="pic_title">阴阳师</p></a></li>
+                <li><a href=""><img src="images/34.jpg" alt="34"><p class="pic_title">贪吃蛇</p></a></li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <ul>
+                <li><a href=""><img src="images/35.jpg" alt="35"><p class="pic_title">天天酷跑</p></a></li>
+                <li><a href=""><img src="images/36.jpg" alt="36"><p class="pic_title">天天爱消除</p></a></li>
+                <li><a href=""><img src="images/37.jpg" alt="37"><p class="pic_title">捕鱼达人3</p></a></li>
+                <li><a href=""><img src="images/38.jpg" alt="38"><p class="pic_title">汤姆猫游戏</p></a></li>
+                <li><a href=""><img src="images/39.jpg" alt="39"><p class="pic_title">狂野飙车8</p></a></li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <ul>
+                <li><a href=""><img src="images/40.jpg" alt="40"><p class="pic_title">天天酷跑</p></a></li>
+                <li><a href=""><img src="images/41.jpg" alt="41"><p class="pic_title">天天打波利</p></a></li>
+                <li><a href=""><img src="images/42.jpg" alt="42"><p class="pic_title">火影战记</p></a></li>
+                <li><a href=""><img src="images/43.jpg" alt="43"><p class="pic_title">火柴人联盟</p></a></li>
+                <li><a href=""><img src="images/44.jpg" alt="44"><p class="pic_title">倩女幽魂</p></a></li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <ul>
+                <li><a href=""><img src="images/45.jpg" alt="45"><p class="pic_title">梦三国</p></a></li>
+                <li><a href=""><img src="images/46.jpg" alt="46"><p class="pic_title">Fate/GO</p></a></li>
+                <li><a href=""><img src="images/47.jpg" alt="47"><p class="pic_title">极品三国</p></a></li>
+                <li><a href=""><img src="images/48.jpg" alt="48"><p class="pic_title">世纪帝国</p></a></li>
+                <li><a href=""><img src="images/49.jpg" alt="49"><p class="pic_title">刀塔传奇</p></a></li>
+            </ul>
+        </div>
+        
+        </div>
+        
+    </div>
+
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+<!--
+<script src="../scripts/jquery-1.11.1.min.js"></script>
+-->
+<script>
+    
+	$(function(){
+		
+		$("#nav li").eq(0).addClass("color");
+		$("#nav li").click(function(event){
+			event.preventDefault();
+			var dex=$(this).index();
+			animate(dex);
+			$(this).addClass("color")
+			    .siblings().removeClass("color");
+		})
+		
+		function animate(i){
+			$(".box").eq(i).show()
+			    .siblings().hide();
+		};
+		animate(0)
+		
+	});
+	
+</script>
+</body>
+</html>
